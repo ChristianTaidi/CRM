@@ -1,0 +1,109 @@
+<html>
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+
+    <link type="text/css" rel="stylesheet" href="./assets/css/index.css">
+
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="./assets/js/CRM.js"></script>
+</head>
+
+<body>
+    <div id="addDialog" class="modal-dialog form-group">
+        <div class="modal-content ">
+            <h3>Crear Campaña de marketing<span class="glyphicon glyphicon-pencil"></span></h3>
+            <div class="input-group">
+                <span class="input-group-addon">Note Description</span>
+                <textarea id="descriptionInput"></textarea>
+
+            </div>
+            <div>
+                <span class="date">Note Date</span>
+                <input id="dateInput" size="16" type="date">
+            </div>
+            <button id="save" type="submit" class="btn btn-primary btn-md btn-info "><span
+                    class="glyphicon glyphicon-ok"></span>Save</button>
+            <button id="close" type="submit" class="btn btn-primary btn-md btn-info "><span
+                    class="glyphicon glyphicon-remove"></span>Cancel</button>
+        </div>
+
+    </div>
+
+    <div id="editDialog" class="modal-dialog form-group">
+        <div class="modal-content">
+            <h3>Añadir datos de clientes<span class="glyphicon glyphicon-pencil"></span></h3>
+            <div class="input-group">
+                <span class="input-group-addon">Note Description</span>
+                <textarea id="descriptionInputEdit"></textarea>
+
+            </div>
+            <div>
+                <span class="date">Note Date</span>
+                <input id="date" size="16" type="date">
+            </div>
+
+
+            <div class="dialogButtons">
+                <button id="edit" type="submit" class="btn btn-primary btn-md btn-info ">
+                    <span class="glyphicon glyphicon-edit"></span>Save</button>
+                <button id="closeEdit" type="submit" class="btn btn-primary btn-md btn-info"><span
+                        class="glyphicon glyphicon-remove"></span>Cancel</button>
+                <button id="delete" type="submit" class="btn btn-primary btn-md btn-info"> <span
+                        class="glyphicon glyphicon-trash"></span>
+                    Delete</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="editDialog" class="modal-dialog form-group">
+            <div class="modal-content">
+                <h3>Visualizar Estadísticas<span class="glyphicon glyphicon-pencil"></span></h3>
+                <div class="input-group">
+                    <span class="input-group-addon">Note Description</span>
+                    <textarea id="descriptionInputEdit"></textarea>
+    
+                </div>
+                <div>
+                    <span class="date">Note Date</span>
+                    <input id="date" size="16" type="date">
+                </div>
+    
+    
+                <div class="dialogButtons">
+                    <button id="edit" type="submit" class="btn btn-primary btn-md btn-info ">
+                        <span class="glyphicon glyphicon-edit"></span>Save</button>
+                    <button id="closeEdit" type="submit" class="btn btn-primary btn-md btn-info"><span
+                            class="glyphicon glyphicon-remove"></span>Cancel</button>
+                    <button id="delete" type="submit" class="btn btn-primary btn-md btn-info"> <span
+                            class="glyphicon glyphicon-trash"></span>
+                        Delete</button>
+                </div>
+            </div>
+    
+        </div>
+    
+
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <span class="panel-title">Note Pad<span class="glyphicon glyphicon-list"></span></span>
+            <button id="addNote" type="button" class="btn-primary">New note</button>
+
+        </div>
+        <div class="panel-body">
+            <div id="notes">
+                <h3 id="emptyNotes">No current notes</h3>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
