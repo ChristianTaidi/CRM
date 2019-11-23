@@ -238,4 +238,45 @@ $(document).ready(function () {
         }
     }
 
+
+    
+
+    google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Año', 'Ganancias', 'Gastos'],
+          ['2013',  1000,      400],
+          ['2014',  1170,      460],
+          ['2015',  660,       1120],
+          ['2016',  1030,      540]
+        ]);
+
+        var data2 = google.visualization.arrayToDataTable([
+            ['Clientes', 'Tipos'],
+            ['Clientes normales',     21],
+            ['Diseñadores',    7]
+          ]);
+
+        var options = {
+          title: 'Rendimiento de la empresa',
+          hAxis: {title: 'Año',  titleTextStyle: {color: '#333'}},
+          vAxis: {minValue: 0}
+        };
+
+        var options2 = {
+            title: 'Clientes'
+          };
+
+        var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+
+        var chart2 = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+
+        chart2.draw(data2, options2);
+    }
+    
+
 })
