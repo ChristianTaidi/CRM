@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
 
-    <link type="text/css" rel="stylesheet" href="./assets/css/index.css">
+    <link type="text/css" href="./assets/css/index.css" rel="stylesheet">
 
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 
@@ -16,29 +16,86 @@
 </head>
 
 <body>
-    <div id="addDialog" class="modal-dialog form-group">
-        <div class="modal-content ">
-            <h3>Crear Campaña de marketing<span class="glyphicon glyphicon-pencil"></span></h3>
+
+    <div id="marketing" class="modal-dialog form-group">
+        <div class="modal-content">
+            <h3>Crear campaña de marketing<span class="glyphicon glyphicon-pencil"></span></h3>
             <div class="input-group">
-                <span class="input-group-addon">Note Description</span>
-                <textarea id="descriptionInput"></textarea>
+                <form>
+                    <span class="input-group-addon">Cliente objetivo</span>
+                    <input type="radio" name="user" value="user" checked>Usuario<br>
+                    <input type="radio" name="user" value="designer">Diseñador<br>
+                </form>
+                <form>
+                    <span class="input-group-addon">Tipo de campaña</span>
+                    <input type="radio" name="type" value="product" checked>Oferta Productos<br>
+                    <input type="radio" name="type" value="recruiting">Ventajas reclutamiento<br>
+                    <input type="radio" name="type" value="recommend">Recomendar diseñadores<br>
+                </form>
+                <span>Descripción de la campaña</span>
+                <textarea id="descriptionInputEdit" rows="7" cols="60"></textarea>
 
             </div>
             <div>
-                <span class="date">Note Date</span>
-                <input id="dateInput" size="16" type="date">
+                <div>
+                    <span class="date">Fecha inicio</span>
+                    <input id="date" size="16" type="date">
+                </div>
+                <div>
+                    <span class="date">Fecha fin</span>
+                    <input id="date" size="16" type="date">
+                </div>
             </div>
-            <button id="save" type="submit" class="btn btn-primary btn-md btn-info "><span
-                    class="glyphicon glyphicon-ok"></span>Save</button>
-            <button id="close" type="submit" class="btn btn-primary btn-md btn-info "><span
-                    class="glyphicon glyphicon-remove"></span>Cancel</button>
+
+
+            <div class="dialogButtons">
+                <button id="save-marketing" type="submit" class="btn btn-primary btn-md btn-info ">
+                    <span class="glyphicon glyphicon-edit"></span>Save</button>
+                <button id="close-marketing" type="submit" class="btn btn-primary btn-md btn-info"><span
+                        class="glyphicon glyphicon-remove"></span>Cancel</button>
+                <button id="delete" type="submit" class="btn btn-primary btn-md btn-info"> <span
+                        class="glyphicon glyphicon-trash"></span>
+                    Delete</button>
+            </div>
         </div>
 
     </div>
 
-    <div id="editDialog" class="modal-dialog form-group">
+    <div id="clientDialog" class="modal-dialog form-group">
         <div class="modal-content">
             <h3>Añadir datos de clientes<span class="glyphicon glyphicon-pencil"></span></h3>
+            <div class="input-group">
+                <div>
+                    <span class="input-group-addon">Note Description</span>
+                </div>
+                <div>
+                    <textarea id="descriptionInputEdit" rows="10" cols="30"></textarea>
+                </div>
+            </div>
+            <div>
+                <span class="date">Note Date</span>
+                <input id="date" size="16" type="date">
+            </div>
+
+
+            <div class="dialogButtons">
+                <button id="edit" type="submit" class="btn btn-primary btn-md btn-info ">
+                    <span class="glyphicon glyphicon-edit"></span>Save</button>
+                <button id="closeEdit" type="submit" class="btn btn-primary btn-md btn-info"><span
+                        class="glyphicon glyphicon-remove"></span>Cancel</button>
+                <button id="delete" type="submit" class="btn btn-primary btn-md btn-info"> <span
+                        class="glyphicon glyphicon-trash"></span>
+                    Delete</button>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div id="statsDisplay" class="modal-dialog form-group">
+        <div class="modal-content">
+            <h3>Visualizar Estadísticas<span class="glyphicon glyphicon-pencil"></span></h3>
             <div class="input-group">
                 <span class="input-group-addon">Note Description</span>
                 <textarea id="descriptionInputEdit"></textarea>
@@ -63,43 +120,45 @@
 
     </div>
 
-    <div id="editDialog" class="modal-dialog form-group">
-            <div class="modal-content">
-                <h3>Visualizar Estadísticas<span class="glyphicon glyphicon-pencil"></span></h3>
-                <div class="input-group">
-                    <span class="input-group-addon">Note Description</span>
-                    <textarea id="descriptionInputEdit"></textarea>
-    
-                </div>
-                <div>
-                    <span class="date">Note Date</span>
-                    <input id="date" size="16" type="date">
-                </div>
-    
-    
-                <div class="dialogButtons">
-                    <button id="edit" type="submit" class="btn btn-primary btn-md btn-info ">
-                        <span class="glyphicon glyphicon-edit"></span>Save</button>
-                    <button id="closeEdit" type="submit" class="btn btn-primary btn-md btn-info"><span
-                            class="glyphicon glyphicon-remove"></span>Cancel</button>
-                    <button id="delete" type="submit" class="btn btn-primary btn-md btn-info"> <span
-                            class="glyphicon glyphicon-trash"></span>
-                        Delete</button>
-                </div>
-            </div>
-    
-        </div>
-    
 
     <div class="panel panel-info">
         <div class="panel-heading">
-            <span class="panel-title">Note Pad<span class="glyphicon glyphicon-list"></span></span>
-            <button id="addNote" type="button" class="btn-primary">New note</button>
+            <span class="panel-title">CRM<span class="glyphicon glyphicon-list"></span></span>
+
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <button id="addNote" type="button" class="btn-primary">Crear campaña de marketing</button>
 
         </div>
         <div class="panel-body">
             <div id="notes">
-                <h3 id="emptyNotes">No current notes</h3>
+                <h3 id="emptyNotes">No current data</h3>
+            </div>
+
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <button id="addClient" type="button" class="btn-primary">Añadir datos de clientes</button>
+
+        </div>
+        <div class="panel-body">
+            <div id="notes">
+                <h3 id="emptyNotes">No current data</h3>
+            </div>
+
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <button id="stats" type="button" class="btn-primary">Visualizar estadísticas</button>
+
+        </div>
+        <div class="panel-body">
+            <div id="notes">
+                <h3 id="emptyNotes">No current data</h3>
             </div>
 
         </div>

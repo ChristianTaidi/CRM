@@ -98,15 +98,22 @@ $(document).ready(function () {
         }
     })
 
-    var dialogAdd = document.getElementById('addDialog');
+    var marketing = document.getElementById('marketing');
 
-    var dialogEdit = document.getElementById('editDialog');
+    var dialogClient = document.getElementById('clientDialog');
+
+    var dialogStats = document.getElementById('statsDisplay');
+
 
     var btn = document.getElementById("addNote");
 
-    var closeBtn = document.getElementById("close");
+    var clientBtn = document.getElementById("addClient");
 
-    var save = document.getElementById("save");
+    var statsBtn = document.getElementById("stats");
+
+    var closeMarketing = document.getElementById("close-marketing");
+
+    var saveMarketing = document.getElementById("save-marketing");
 
     var edit = document.getElementById("edit");
 
@@ -176,17 +183,26 @@ $(document).ready(function () {
     })
 
     btn.onclick = function () {
-        dialogAdd.style.display = "block";
+        marketing.style.display = "block";
+    }
+
+    statsBtn.onclick = function () {
+        console.log("Stats display")
+        dialogStats.style.display = "block";
+    }
+
+    clientBtn.onclick = function () {
+        dialogClient.style.display = "block";
     }
 
 
-    closeBtn.onclick = function () {
+    closeMarketing.onclick = function () {
 
-        dialogAdd.style.display = "none";
+        marketing.style.display = "none";
 
     }
 
-    save.onclick = function () {
+    saveMarketing.onclick = function () {
 
         var descriptionField = $("#descriptionInput");
         var date = $("#dateInput").val();
@@ -207,16 +223,19 @@ $(document).ready(function () {
             showNote(createdNote);
         })
 
-        dialogAdd.style.display = "none";
+        marketing.style.display = "none";
     }
 
 
     window.onclick = function (event) {
-        if (event.target == dialogAdd) {
-            dialogAdd.style.display = "none";
+        if (event.target == marketing) {
+            marketing.style.display = "none";
         }
-        if (event.target == dialogEdit) {
-            dialogEdit.style.display = "none";
+        if (event.target == dialogClient) {
+            dialogClient.style.display = "none";
+        }
+        if(event.target == dialogStats){
+            dialogStats.style.display = "none";
         }
     }
 

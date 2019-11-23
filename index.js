@@ -13,6 +13,9 @@ app.get('/assets/js/CRM.js',(req,res)=>{
     res.sendFile(path.resolve(__dirname,'./assets/js/CRM.js'))
 })
 
+app.get('/assets/css/index.css',(req,res)=>{
+    res.sendFile(path.resolve(__dirname,'./assets/css/index.css'))
+})
 
 app.get('/')
 
