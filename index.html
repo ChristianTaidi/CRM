@@ -13,6 +13,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="./assets/js/CRM.js"></script>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 </head>
 
 <body>
@@ -96,26 +99,7 @@
     <div id="statsDisplay" class="modal-dialog form-group">
         <div class="modal-content">
             <h3>Visualizar Estadísticas<span class="glyphicon glyphicon-pencil"></span></h3>
-            <div class="input-group">
-                <span class="input-group-addon">Note Description</span>
-                <textarea id="descriptionInputEdit"></textarea>
-
-            </div>
-            <div>
-                <span class="date">Note Date</span>
-                <input id="date" size="16" type="date">
-            </div>
-
-
-            <div class="dialogButtons">
-                <button id="edit" type="submit" class="btn btn-primary btn-md btn-info ">
-                    <span class="glyphicon glyphicon-edit"></span>Save</button>
-                <button id="closeEdit" type="submit" class="btn btn-primary btn-md btn-info"><span
-                        class="glyphicon glyphicon-remove"></span>Cancel</button>
-                <button id="delete" type="submit" class="btn btn-primary btn-md btn-info"> <span
-                        class="glyphicon glyphicon-trash"></span>
-                    Delete</button>
-            </div>
+            <div id="chart_div" style="width: 900px; height: 500px;"></div>
         </div>
 
     </div>
