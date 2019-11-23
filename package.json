@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "bluebird": "^3.7.1",
+    "express": "^4.17.1",
+    "sqlite3": "^4.1.0"
   }
 }

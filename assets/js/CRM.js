@@ -104,7 +104,6 @@ $(document).ready(function () {
 
     var dialogStats = document.getElementById('statsDisplay');
 
-
     var btn = document.getElementById("addNote");
 
     var clientBtn = document.getElementById("addClient");
