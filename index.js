@@ -1,8 +1,8 @@
 const express = require('express');
 const path = require('path')
 const app = express();
-app.listen(443,()=>{
-    console.log('Server started on port 443')
+app.listen(8080,()=>{
+    console.log('Server started on port 8080')
 })
 
 app.get('/', (req,res)=>{
@@ -17,5 +17,14 @@ app.get('/assets/css/index.css',(req,res)=>{
     res.sendFile(path.resolve(__dirname,'./assets/css/index.css'))
 })
 
-app.get('/')
+app.post('/marketing',(req,res)=>{
+
+    //ToDo create and save the marketing campaign data
+});
+
+app.post('/clientdata',(req,res)=>{
+    //ToDo save the client data received in the database
+});
+
+
 
