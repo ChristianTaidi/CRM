@@ -203,9 +203,18 @@ $(document).ready(function () {
 
     saveMarketing.onclick = function () {
 
-        var descriptionField = $("#descriptionInput");
-        var date = $("#dateInput").val();
+        var user = $("input:radio[name=user]:checked").val()
+        var campaign = $("input:radio[name=type]:checked").val()
+        console.log(user)
+        console.log(campaign)
+        var descriptionField = $("#campaignDescription").val();
+        console.log(descriptionField)
+        var dateStart = $("#dateStart").val();
+        var dateEnd = $("#dateEnd").val();
+        console.log(dateStart);
+        console.log(dateEnd);
 
+        //ToDo send to the node server http://localhost:8080/marketing the data
 
         if ($('#emptyNotes').length) {
             document.getElementById("emptyNotes").remove();

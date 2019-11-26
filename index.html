@@ -24,7 +24,7 @@
         <div class="modal-content">
             <h3>Crear campaña de marketing<span class="glyphicon glyphicon-pencil"></span></h3>
             <div class="input-group">
-                <form>
+                <form id>
                     <span class="input-group-addon">Cliente objetivo</span>
                     <input type="radio" name="user" value="user" checked>Usuario<br>
                     <input type="radio" name="user" value="designer">Diseñador<br>
@@ -36,17 +36,17 @@
                     <input type="radio" name="type" value="recommend">Recomendar diseñadores<br>
                 </form>
                 <span>Descripción de la campaña</span>
-                <textarea id="descriptionInputEdit" rows="7" cols="60"></textarea>
+                <textarea id="campaignDescription" rows="7" cols="60"></textarea>
 
             </div>
             <div>
                 <div>
                     <span class="date">Fecha inicio</span>
-                    <input id="date" size="16" type="date">
+                    <input id="dateStart" size="16" type="date">
                 </div>
                 <div>
                     <span class="date">Fecha fin</span>
-                    <input id="date" size="16" type="date">
+                    <input id="dateEnd" size="16" type="date">
                 </div>
             </div>
 

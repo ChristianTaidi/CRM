@@ -18,6 +18,7 @@ app.get('/assets/css/index.css',(req,res)=>{
 })
 
 app.post('/marketing',(req,res)=>{
+    console.log('Add marketing campaign');
 
     //ToDo create and save the marketing campaign data
 });
