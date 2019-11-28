@@ -17,12 +17,12 @@ function loadNotes(callback) {
 
 }
 // manages the add new notes button
-function addNote(note, callback) {
-    console.log("addNote")
+function createCampaign(campaign, callback) {
+    console.log("add campaign")
     $.ajax({
         method: "POST",
-        url: 'http://localhost:8080/notes/',
-        data: JSON.stringify(note),
+        url: 'http://localhost:8080/marketing/',
+        data: JSON.stringify(campaign),
         processData: false,
         headers: {
             "Content-Type": "application/json"
@@ -216,19 +216,15 @@ $(document).ready(function () {
 
         //ToDo send to the node server http://localhost:8080/marketing the data
 
-        if ($('#emptyNotes').length) {
-            document.getElementById("emptyNotes").remove();
+        var campaign = {
+            user: user,
+            campaign: campaign,
+            description: descriptionField,
+            dateStart: dateStart,
+            dateEnd: dateEnd
         }
-
-        var descriptionInfo = descriptionField.val();
-        descriptionField.val('');
-
-        var note = {
-            description: descriptionInfo,
-            date: date,
-        }
-        addNote(note, function (createdNote) {
-            showNote(createdNote);
+        createCampaign(campaign, function (createdCampaign) {
+            showNote(createdCampaign);
         })
 
         marketing.style.display = "none";
