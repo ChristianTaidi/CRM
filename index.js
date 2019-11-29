@@ -6,6 +6,7 @@ var bodyParser = require('body-parser')
 const dao = new appDAO('./database.db');
 const app = express();
 let idCounter = 0;
+let idCounterCostumer = 0;
 app.listen(8080,()=>{
     console.log('Server started on port 8080')
 })
@@ -35,7 +36,12 @@ app.post('/marketing',(req,res)=>{
     //ToDo create and save the marketing campaign data
 });
 
-app.post('/clientdata',(req,res)=>{
+app.post('/costumer',(req,res)=>{
+    console.log('Add costumer');
+    console.log(req.body);
+    let costumer = req.body;
+    idCounterCostumer += 1
+    costumerId = dao.run('INSERT INTO COSTUMER (ID_COSTUMER,NAME_COSTUMER,TYPE_COSTUMER,CITY, COUNTRY) values ($1,$2,$3,$4,$5)',[idCounterCostumer,costumer.name,costumer.type,costumer.city,costumer.country]);
     //ToDo save the client data received in the database
 });
 

@@ -35,6 +35,25 @@ function createCampaign(campaign, callback) {
     })
 
 }
+
+function createCostumer(costumer, callback) {
+    console.log("add costumer")
+    $.ajax({
+        method: "POST",
+        url: 'http://localhost:8080/costumer/',
+        data: JSON.stringify(costumer),
+        processData: false,
+        headers: {
+            "Content-Type": "application/json"
+        }
+
+
+    }).done(function (note) {
+        console.log("note created" + JSON.stringify(note));
+        callback(note);
+    })
+
+}
 // appends the notes to the html document
 function showNote(note) {
 
@@ -107,6 +126,8 @@ $(document).ready(function () {
     var btn = document.getElementById("addNote");
 
     var clientBtn = document.getElementById("addClient");
+
+    var saveCostumer = document.getElementById("edit");
 
     var statsBtn = document.getElementById("stats");
 
@@ -192,6 +213,31 @@ $(document).ready(function () {
 
     clientBtn.onclick = function () {
         dialogClient.style.display = "block";
+    }
+
+    saveCostumer.onclick = function () {
+
+        var name = $("#nameClient").val();
+        var country = $("#cityCountry").val();
+        var city = $("#cityClient").val();
+        console.log(name)
+        console.log(country)
+        console.log(city)
+        var type = $("input:radio[name=user]:checked").val();
+        console.log(type)
+
+
+        var costumer = {
+            name: name,
+            type: type,
+            city: city,
+            country: country
+        }
+        createCostumer(costumer, function (createdCostumer) {
+            showNote(createdCostumer);
+        })
+
+        dialogClient.style.display = "none";
     }
 
 

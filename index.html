@@ -67,17 +67,25 @@
     <div id="clientDialog" class="modal-dialog form-group">
         <div class="modal-content">
             <h3>Añadir datos de clientes<span class="glyphicon glyphicon-pencil"></span></h3>
-            <div class="input-group">
-                <div>
-                    <span class="input-group-addon">Note Description</span>
-                </div>
-                <div>
-                    <textarea id="descriptionInputEdit" rows="10" cols="30"></textarea>
-                </div>
+            <div>
+                <span>Nombre</span>
+                <input id="nameClient" type="text"></textarea>
             </div>
             <div>
-                <span class="date">Note Date</span>
-                <input id="date" size="16" type="date">
+                <span>Pais</span>
+                <input id="countryClient" type="text"></textarea>
+            </div>
+            <div>
+                <span >Ciudad</span>
+                <input id="cityClient" type="text" ></textarea> 
+            </div>
+
+            <div class="input-group">
+                <form>
+                    <span class="input-group-addon">Tipo de cliente</span>
+                    <input type="radio" name="user" value="user" checked>Usuario<br>
+                    <input type="radio" name="user" value="designer">Diseñador<br>
+                </form>
             </div>
 
 
