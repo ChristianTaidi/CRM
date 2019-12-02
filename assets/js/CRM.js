@@ -36,12 +36,12 @@ function createCampaign(campaign, callback) {
 
 }
 
-function createCostumer(costumer, callback) {
-    console.log("add costumer")
+function createCustomer(customer, callback) {
+    console.log("add customer")
     $.ajax({
         method: "POST",
-        url: 'http://localhost:8080/costumer/',
-        data: JSON.stringify(costumer),
+        url: 'http://localhost:8080/customer/',
+        data: JSON.stringify(customer),
         processData: false,
         headers: {
             "Content-Type": "application/json"
@@ -127,7 +127,7 @@ $(document).ready(function () {
 
     var clientBtn = document.getElementById("addClient");
 
-    var saveCostumer = document.getElementById("edit");
+    var saveCustomer = document.getElementById("edit");
 
     var statsBtn = document.getElementById("stats");
 
@@ -215,7 +215,7 @@ $(document).ready(function () {
         dialogClient.style.display = "block";
     }
 
-    saveCostumer.onclick = function () {
+    saveCustomer.onclick = function () {
 
         var name = $("#nameClient").val();
         var country = $("#cityCountry").val();
@@ -227,14 +227,14 @@ $(document).ready(function () {
         console.log(type)
 
 
-        var costumer = {
+        var customer = {
             name: name,
             type: type,
             city: city,
             country: country
         }
-        createCostumer(costumer, function (createdCostumer) {
-            showNote(createdCostumer);
+        createCustomer(customer, function (createdCustomer) {
+            showNote(createdCustomer);
         })
 
         dialogClient.style.display = "none";
