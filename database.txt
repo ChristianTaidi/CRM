@@ -15,14 +15,17 @@ COUNTRY text (30) NOT NULL);
 
 CREATE TABLE DESIGN(
 ID_DESIGNE integer primary key autoincrement,
-foreign key(ID_DESIGNER) references DESIGNER(ID_DESIGNER),
+ID_DESIGNER integer,
 VALUE integer (10) NOT NULL DEFAULT 0,
 START_DATE DATE NOT NULL DEFAULT CURRENT_DATE,
 FINISH_DATE DATE,
-DESCRIPTION text (255));
+DESCRIPTION text (255),
+foreign key(ID_DESIGNER) references DESIGNER(ID_DESIGNER));
 
 CREATE TABLE DESIGNERCUSTOMER(
 ID_DESIGN integer primary key autoincrement,
+ID_CUSTOMER integer,
+ID_DESIGNER integer,
 foreign key(ID_CUSTOMER) references CUSTOMER(ID_CUSTOMER),
 foreign key(ID_DESIGNER) references DESIGNER(ID_DESIGNER),
 foreign key(ID_DESIGN) references DESIGN(ID_DESIGN));
@@ -31,10 +34,11 @@ foreign key(ID_DESIGN) references DESIGN(ID_DESIGN));
 
 CREATE TABLE CAMPAIGN (
 ID_CAMPAIGN integer primary key autoincrement,
-foreign key(ID_DESIGNER) references DESIGNER(ID_DESIGNER),
+ID_DESIGNER integer,
 TYPE_CAMPAIGN text (30),
 OBJECTIVE_CUSTOMER text (25),
 DESCRIPTION text (255),
 START_DATE DATE DEFAULT CURRENT_DATE,
 FINISH_DATE DATE,
-VALUE integer (10) DEFAULT 0);
+VALUE integer (10) DEFAULT 0,
+foreign key(ID_DESIGNER) references DESIGNER(ID_DESIGNER));
