@@ -14,7 +14,7 @@ CITY text (30) NOT NULL,
 COUNTRY text (30) NOT NULL);
 
 CREATE TABLE DESIGN(
-ID_DESIGNE integer primary key autoincrement,
+ID_DESIGN integer primary key autoincrement,
 ID_DESIGNER integer,
 VALUE integer (10) NOT NULL DEFAULT 0,
 START_DATE DATE NOT NULL DEFAULT CURRENT_DATE,
