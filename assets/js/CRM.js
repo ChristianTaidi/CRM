@@ -218,7 +218,7 @@ $(document).ready(function () {
     saveCustomer.onclick = function () {
 
         var name = $("#nameClient").val();
-        var country = $("#cityCountry").val();
+        var country = $("#countryClient").val();
         var city = $("#cityClient").val();
         console.log(name)
         console.log(country)
