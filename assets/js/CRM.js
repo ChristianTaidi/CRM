@@ -109,6 +109,11 @@ $(document).ready(function () {
 
     loadData(function (data) {
         console.log("Callback");
+        console.log(data.designers);
+        console.log(data.customers);
+        console.log(data.orders);
+        console.log(data.designs);
+
         if (notes.length > 0) {
             document.getElementById("emptyNotes").remove();
         }

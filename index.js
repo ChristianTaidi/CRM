@@ -43,6 +43,12 @@ app.get('/data',(req,res)=>{
     customerData = dao.getAll("SELECT * FROM CUSTOMER");
     designData = dao.getAll("SELECT * FROM DESIGN");
     orderData = dao.getAll("SELECT  * FROM DESIGN_ORDER do, CUSTOMER c, DESIGNER dsg,DESIGN dsn WHERE do.ID_CUSTOMER=c.ID_CUSTOMER AND do.ID_DESIGN=dsn.ID_DESIGN AND dsg.ID_DESIGNER=dsn.ID_DESIGNER")
+    res.status(200).json({
+        designers:designerData,
+        customers:customerData,
+        designs:designData,
+        orders:orderData
+    });
 })
 
 app.post('/customer',(req,res)=>{
