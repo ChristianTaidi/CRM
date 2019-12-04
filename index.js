@@ -31,7 +31,7 @@ app.post('/marketing',(req,res)=>{
     console.log(req.body);
     let campaign = req.body;
     idCounter += 1;
-    campaignId = dao.run('INSERT INTO CAMPAIGN (ID_CAMPAIGN,TYPE_CAMPAIGN,OBJECTIVE_CUSTOMER,DESCRIPTION,START_DATE,END_DATE) values ($1,$2,$3,$4,$5,$6)',[idCounter,campaign.campaign,campaign.user,campaign.description,campaign.dateStart, campaign.dateEnd]);
+    campaignId = dao.run('INSERT INTO CAMPAIGN (ID_CAMPAIGN,TYPE_CAMPAIGN,OBJECTIVE_CUSTOMER,DESCRIPTION,START_DATE,FINISH_DATE) values ($1,$2,$3,$4,$5,$6)',[idCounter,campaign.campaign,campaign.user,campaign.description,campaign.dateStart, campaign.dateEnd]);
 
     //ToDo create and save the marketing campaign data
 });

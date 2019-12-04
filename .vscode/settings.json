@@ -1,0 +1,15 @@
+{
+    "sqltools.connections": [
+        {
+            "database": "${workspaceFolder}\\database.db",
+            "dialect": "SQLite",
+            "name": "CRM"
+        },
+        {
+            "database": "${workspaceFolder}\\database.db",
+            "dialect": "SQLite",
+            "name": "CRM"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}

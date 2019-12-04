@@ -291,7 +291,7 @@ $(document).ready(function () {
 
 
     
-
+//ToDo obtener datos de la base de datos y mostrar en estadísticas
     google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
 
