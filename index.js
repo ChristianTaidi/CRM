@@ -36,6 +36,15 @@ app.post('/marketing',(req,res)=>{
     //ToDo create and save the marketing campaign data
 });
 
+app.get('/data',(req,res)=>{
+    console.log('Load Data');
+
+    designerData= dao.getAll("SELECT * FROM DESIGNER");
+    customerData = dao.getAll("SELECT * FROM CUSTOMER");
+    designData = dao.getAll("SELECT * FROM DESIGN");
+    orderData = dao.getAll("SELECT  * FROM DESIGN_ORDER do, CUSTOMER c, DESIGNER dsg,DESIGN dsn WHERE do.ID_CUSTOMER=c.ID_CUSTOMER AND do.ID_DESIGN=dsn.ID_DESIGN AND dsg.ID_DESIGNER=dsn.ID_DESIGNER")
+})
+
 app.post('/customer',(req,res)=>{
     console.log('Add customer');
     console.log(req.body);

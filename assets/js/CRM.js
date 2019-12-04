@@ -1,16 +1,16 @@
 //manages the get all the notes calls 
-function loadNotes(callback) {
+function loadData(callback) {
 
-    console.log("loadNotes");
+    console.log("downloading data...");
 
     var dataAux;
 
     $.ajax({
         method: "GET",
-        url: "http://127.0.0.1:8080/notes/"
-    }).done(function (notes) {
-        dataAux = notes;
-        callback(notes);
+        url: "http://127.0.0.1:8080/data/"
+    }).done(function (data) {
+        dataAux = data;
+        callback(data);
     })
 
     callback([]);
@@ -107,7 +107,7 @@ function deleteNote(id) {
 $(document).ready(function () {
     var addDialog = document.getElementsByClassName("addDialog");
 
-    loadNotes(function (notes) {
+    loadData(function (data) {
         console.log("Callback");
         if (notes.length > 0) {
             document.getElementById("emptyNotes").remove();
@@ -306,7 +306,7 @@ $(document).ready(function () {
 
         var data2 = google.visualization.arrayToDataTable([
             ['Clientes', 'Tipos'],
-            ['Clientes normales',     21],
+            ['Usuarios',     21],
             ['Diseñadores',    7]
           ]);
 
