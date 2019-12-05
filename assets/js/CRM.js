@@ -297,10 +297,12 @@ $(document).ready(function () {
 
     
 //ToDo obtener datos de la base de datos y mostrar en estadísticas
-    google.charts.load('current', {'packages':['corechart']});
+    google.charts.load('current', {'packages':['corechart', 'bar']});
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
+
+        //Graficas Numero de clientes y Ganancias/Gastos
         var data = google.visualization.arrayToDataTable([
           ['Año', 'Ganancias', 'Gastos'],
           ['2013',  1000,      400],
@@ -332,6 +334,60 @@ $(document).ready(function () {
         chart.draw(data, options);
 
         chart2.draw(data2, options2);
+
+
+        //Grafica Edad-Presupuesto
+        var dataAgeBudget = google.visualization.arrayToDataTable([
+            ["Edad", "Presupuesto", { role: "style" } ],
+            ["18-25", 300, "gold"],
+            ["26-35", 400, "silver"],
+            ["35-55", 450, "bronze"]
+        ]);
+    
+        var viewAgeBudget = new google.visualization.DataView(dataAgeBudget);
+        viewAgeBudget.setColumns([0, 1,
+                           { calc: "stringify",
+                             sourceColumn: 1,
+                             type: "string",
+                             role: "annotation" },
+                           2]);
+    
+        var optionsAgeBudget = {
+            title: "Relación Edad-Presupuesto",
+            width: 425,
+            height: 270,
+            bar: {groupWidth: "95%"},
+            legend: { position: "none" },
+        };
+
+        var chartAgeBudget = new google.visualization.ColumnChart(document.getElementById("age-budget"));
+        chartAgeBudget.draw(viewAgeBudget, optionsAgeBudget);
+
+
+        //Grafica Diseñadores-Estilos de diseño
+        var dataDesigners = new google.visualization.arrayToDataTable([
+            ['Diseñadores', 'Nº de estilos'],
+            ["Diseñador 1", 2],
+            ["Diseñador 2", 7],
+            ["Diseñador 3", 5],
+          ]);
+  
+          var optionsDesigners = {
+            width: 400,
+            height: 200,
+            chart: {
+                title: 'Diseñadores - Nº de estilos'},
+              axes: {
+                x: {
+                  0: { side: 'bot', label: 'Diseñadores'} // Top x-axis.
+                }
+              },
+            legend: { position: 'none' },
+            bar: { groupWidth: "90%" }
+          };
+
+          var chartDesigners = new google.charts.Bar(document.getElementById('designers-styles'));
+          chartDesigners.draw(dataDesigners, google.charts.Bar.convertOptions(optionsDesigners));
     }
     
 
