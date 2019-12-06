@@ -73,17 +73,15 @@ app.post('/customer',(req,res)=>{
     console.log('Add customer');
     console.log(req.body);
     let customer = req.body;
-    customerId = dao.run('INSERT INTO CUSTOMER (NAME_CUSTOMER,TYPE_CUSTOMER,CITY, COUNTRY) values ($1,$2,$3,$4)',[customer.name,customer.type,customer.city,customer.country]);
+    if(customer.type == "user"){
+        customerId = dao.run('INSERT INTO CUSTOMER (NAME_CUSTOMER,TYPE_CUSTOMER,CITY, COUNTRY) values ($1,$2,$3,$4)',[customer.name,customer.type,customer.city,customer.country]); 
+    }else{
+        customerId = dao.run('INSERT INTO DESIGNER (NAME_DESIGNER,NUMBER_OF_DESIGNS,CITY, COUNTRY) values ($1,$2,$3,$4)',[customer.name,0,customer.city,customer.country]);
+    
+    }
     //ToDo save the client data received in the database
 });
 
-app.post('/designer',(req,res)=>{
-    console.log('Add designer');
-    console.log(req.body);
-    let customer = req.body;
-    customerId = dao.run('INSERT INTO DESIGNER (NAME_DESIGNER,NUMBER_OF_DESIGNS,CITY, COUNTRY) values ($1,$2,$3,$4,$5)',[idCounterDesigner,designer.name,designer.designs,designer.city,designer.country]);
-    //ToDo save the client data received in the database
-});
 
 
 
