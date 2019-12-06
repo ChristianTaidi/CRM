@@ -304,7 +304,7 @@ $(document).ready(function () {
 
     saveMarketing.onclick = function () {
 
-        var user = $("input:radio[name=user]:checked").val()
+        var user = $("input:radio[name=objective]:checked").val()
         var campaign = $("input:radio[name=type]:checked").val()
         console.log(user)
         console.log(campaign)
