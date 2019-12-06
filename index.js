@@ -38,17 +38,38 @@ app.post('/marketing',(req,res)=>{
 
 app.get('/data',(req,res)=>{
     console.log('Load Data');
+    var designerData;
+    var customerData;
+    var designData;
+    var orderData;
+    dao.getAll("SELECT * FROM DESIGNER").then(
+        (result)=>{
+            designerData=result;
+            dao.getAll("SELECT * FROM CUSTOMER").then(
+                (result)=>{
+                    customerData = result;
+                    dao.getAll("SELECT dsn.ID_DESIGN,dsn.VALUE,dsn.DESCRIPTION, dsg.NAME_DESIGNER FROM DESIGN dsn, DESIGNER dsg where dsn.ID_DESIGNER=dsg.ID_DESIGNER").then(
+                        (result)=>{
+                            designData = result;
+                            dao.getAll("SELECT  * FROM DESIGN_ORDER do, CUSTOMER c, DESIGNER dsg,DESIGN dsn WHERE do.ID_CUSTOMER=c.ID_CUSTOMER AND do.ID_DESIGN=dsn.ID_DESIGN AND dsg.ID_DESIGNER=dsn.ID_DESIGNER").then(
+                                (result)=>{
+                                    orderData = result;
+                                    res.status(200).json({
+                                        designers:designerData,
+                                        customers:customerData,
+                                        designs:designData,
+                                        orders:orderData
+                                    });
+                                }
+                            )
 
-    designerData= dao.getAll("SELECT * FROM DESIGNER");
-    customerData = dao.getAll("SELECT * FROM CUSTOMER");
-    designData = dao.getAll("SELECT * FROM DESIGN");
-    orderData = dao.getAll("SELECT  * FROM DESIGN_ORDER do, CUSTOMER c, DESIGNER dsg,DESIGN dsn WHERE do.ID_CUSTOMER=c.ID_CUSTOMER AND do.ID_DESIGN=dsn.ID_DESIGN AND dsg.ID_DESIGNER=dsn.ID_DESIGNER")
-    res.status(200).json({
-        designers:designerData,
-        customers:customerData,
-        designs:designData,
-        orders:orderData
-    });
+                        }
+                    )
+                } 
+            )
+        }
+    )
+
 })
 
 app.post('/customer',(req,res)=>{

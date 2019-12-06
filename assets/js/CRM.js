@@ -55,21 +55,64 @@ function createCustomer(customer, callback) {
 
 }
 // appends the notes to the html document
-function showNote(note) {
+function showDesigner(designer) {
 
 
-    console.log("Show notes");
-    if (note.date !== null) {
+    console.log("Show designer");
+    if (designer !== null) {
         $('#notes').append(
-            '<div class="note" id="note-' + note.id + '">' +
-            '<p id="description">' + note.description + '</p>' +
-            '<p id="date">' + note.date + '</p>' +
+            '<div class="designer" id="designer-' + designer.ID_DESIGNER + '">' +
+            '<p class="name">' + designer.NAME_DESIGNER + '</p>' +
+            '<p class="nDesigns">' + designer.NUMBER_OF_DESIGNS + '</p>' +
+            '<p class="city">' + designer.CITY + '</p>' +
             ' </div>')
-    } else {
+    }
+}
+
+function showCustomer(customer) {
+
+
+    console.log("Show customer");
+    if (customer !== null) {
         $('#notes').append(
-            '<div class="note" id="note-' + note.id + '">' +
-            '<p id="description">' + note.description + '</p>' +
-            '<p > No Date Available </p>' +
+            '<div class="customer" id="customer-' + customer.ID_CUSTOMER + '">' +
+            '<p class="name">' + customer.NAME_CUSTOMER + '</p>' +
+            '<p class="city">' + customer.CITY + '</p>' +
+            ' </div>')
+    }
+}
+
+function showDesign(design) {
+
+
+    console.log("Show design");
+    if (design !== null) {
+        $('#notes').append(
+            '<div class="design" id="design-' + design.ID_DESIGN + '">' +
+            '<p class="designer">' + design.NAME_DESIGNER + '</p>' +
+
+            '<p class="value">' + design.VALUE + '</p>' +
+            '<p class="description">' + design.DESCRIPTION + '</p>' +
+            ' </div>')
+    }
+}
+
+function showOrder(order) {
+
+
+    console.log("Show order");
+    console.log(order);
+    if (order !== null) {
+        $('#notes').append(
+            '<div class="order" id="order-' + order.ID_ORDER + '">' +
+            '<p class="customer">' + order.NAME_CUSTOMER + '</p>' +
+
+
+            '<p class="designer">' + order.NAME_DESIGNER + '</p>' +
+            '<p class="description">' + order.DESCRIPTION + '</p>' +
+
+
+            '<p class="value">' + order.VALUE + '</p>' +
             ' </div>')
     }
 }
@@ -114,11 +157,18 @@ $(document).ready(function () {
         console.log(data.orders);
         console.log(data.designs);
 
-        if (notes.length > 0) {
-            document.getElementById("emptyNotes").remove();
+       
+        for (var i = 0; i < data.designers.length; i++) {
+            showDesigner(data.designers[i]);
         }
-        for (var i = 0; i < notes.length; i++) {
-            showNote(notes[i]);
+        for (var i = 0; i < data.customers.length; i++) {
+            showCustomer(data.customers[i]);
+        }
+        for (var i = 0; i < data.designs.length; i++) {
+            showDesign(data.designs[i]);
+        }
+        for (var i = 0; i < data.orders.length; i++) {
+            showOrder(data.orders[i]);
         }
     })
 
