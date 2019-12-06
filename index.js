@@ -76,7 +76,7 @@ app.post('/customer',(req,res)=>{
     console.log('Add customer');
     console.log(req.body);
     let customer = req.body;
-    idCounterCustomer += 1
+    idCounterCustomer += 1;
     customerId = dao.run('INSERT INTO CUSTOMER (ID_CUSTOMER,NAME_CUSTOMER,TYPE_CUSTOMER,CITY, COUNTRY) values ($1,$2,$3,$4,$5)',[idCounterCustomer,customer.name,customer.type,customer.city,customer.country]);
     //ToDo save the client data received in the database
 });
@@ -85,7 +85,7 @@ app.post('/designer',(req,res)=>{
     console.log('Add designer');
     console.log(req.body);
     let customer = req.body;
-    idCounterCustomer += 1
+    idCounterDesigner += 1;
     customerId = dao.run('INSERT INTO DESIGNER (ID_DESIGNER,NAME_DESIGNER,NUMBER_OF_DESIGNS,CITY, COUNTRY) values ($1,$2,$3,$4,$5)',[idCounterDesigner,designer.name,designer.designs,designer.city,designer.country]);
     //ToDo save the client data received in the database
 });
