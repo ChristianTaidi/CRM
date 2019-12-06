@@ -28,7 +28,7 @@ app.post('/marketing',(req,res)=>{
     console.log('Add marketing campaign');
     console.log(req.body);
     let campaign = req.body;
-    campaignId = dao.run('INSERT INTO CAMPAIGN (TYPE_CAMPAIGN,OBJECTIVE_CUSTOMER,DESCRIPTION,START_DATE,FINISH_DATE) values ($1,$2,$3,$4,$5)',[campaign.campaign,campaign.user,campaign.description,campaign.dateStart, campaign.dateEnd]);
+    campaignId = dao.run('INSERT INTO CAMPAIGN (TYPE_CAMPAIGN,OBJECTIVE_CUSTOMER,DESCRIPTION,START_DATE,FINISH_DATE) values ($1,$2,$3,$4,$5)',[campaign.type,campaign.target,campaign.description,campaign.startDate, campaign.endDate]);
 
     //ToDo create and save the marketing campaign data
 });
