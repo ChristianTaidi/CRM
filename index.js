@@ -77,5 +77,13 @@ app.post('/customer',(req,res)=>{
     //ToDo save the client data received in the database
 });
 
+app.post('/designer',(req,res)=>{
+    console.log('Add designer');
+    console.log(req.body);
+    let customer = req.body;
+    customerId = dao.run('INSERT INTO DESIGNER (NAME_DESIGNER,NUMBER_OF_DESIGNS,CITY, COUNTRY) values ($1,$2,$3,$4,$5)',[idCounterDesigner,designer.name,designer.designs,designer.city,designer.country]);
+    //ToDo save the client data received in the database
+});
+
 
 

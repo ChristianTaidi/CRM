@@ -52,6 +52,25 @@ function createCustomer(customer, callback) {
     })
 
 }
+
+function createdDesigner(designer, callback) {
+    console.log("add designer")
+    $.ajax({
+        method: "POST",
+        url: 'http://localhost:8080/designer/',
+        data: JSON.stringify(designer),
+        processData: false,
+        headers: {
+            "Content-Type": "application/json"
+        }
+
+
+    }).done(function (note) {
+        console.log("note created" + JSON.stringify(note));
+        callback(note);
+    })
+
+}
 // appends the notes to the html document
 function showDesigner(designer) {
 
@@ -281,16 +300,30 @@ $(document).ready(function () {
         var type = $("input:radio[name=user]:checked").val();
         console.log(type)
 
+        var customer;
 
-        var customer = {
-            name: name,
-            type: type,
-            city: city,
-            country: country
+        if(type == "user"){
+            customer = {
+                name: name,
+                type: type,
+                city: city,
+                country: country
+            }
+            createCustomer(customer, function (createdCustomer) {
+                showNote(createdCustomer);
+            })
+        }else{
+            var numberDesigns = 0;
+            customer = {
+                name: name,
+                city: city,
+                country: country,
+                designs: numberDesigns
+            }
+            createDesigner(customer, function (createdDesigner) {
+                showNote(createdDesigner);
+            })
         }
-        createCustomer(customer, function (createdCustomer) {
-            showNote(createdCustomer);
-        })
 
         dialogClient.style.display = "none";
     }
