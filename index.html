@@ -1,163 +1,168 @@
-<html>
+<!doctype html>
+<html lang="es">
 
 <head>
-
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Required meta tags -->
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link type="text/css" href="./assets/css/index.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Fontawesome icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
+        integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
 
-    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="./assets/js/CRM.js"></script>
-
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
+    <title>Hexagone CRM</title>
 </head>
 
 <body>
 
-    <div id="marketing" class="modal-dialog form-group">
-        <div class="modal-content">
-            <h3>Crear campaña de marketing<span class="glyphicon glyphicon-pencil"></span></h3>
-            <div class="input-group">
-                <form id>
-                    <span class="input-group-addon">Cliente objetivo</span>
-                    <input type="radio" name="user" value="user" checked>Usuario<br>
-                    <input type="radio" name="user" value="designer">Diseñador<br>
-                </form>
-                <form>
-                    <span class="input-group-addon">Tipo de campaña</span>
-                    <input type="radio" name="type" value="product" checked>Oferta Productos<br>
-                    <input type="radio" name="type" value="recruiting">Ventajas reclutamiento<br>
-                    <input type="radio" name="type" value="recommend">Recomendar diseñadores<br>
-                </form>
-                <span>Descripción de la campaña</span>
-                <textarea id="campaignDescription" rows="7" cols="60"></textarea>
+    <nav class="navbar sticky-top navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">Hexagone CRM <i class="fas fa-tasks"></i></a>
+    </nav>
 
-            </div>
-            <div>
-                <div>
-                    <span class="date">Fecha inicio</span>
-                    <input id="dateStart" size="16" type="date">
+    <div class="container">
+        <h1 class="mt-5">Marketing</h1>
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#marketingModal">
+            Crear campaña de marketing
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="marketingModal" tabindex="-1" role="dialog" aria-labelledby="marketingModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="marketingModalLabel">Crear campaña de marketing</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form action="/marketing" method="post">
+                        <div class="modal-body">
+
+                            <div class="form-group">
+                                <label for="target">Cliente objetivo</label>
+                                <select name="target" class="form-control" id="target">
+                                    <option>Usuario</option>
+                                    <option>Diseñador</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="type">Tipo de campaña</label>
+                                <select name="type" class="form-control" id="type">
+                                    <option>Oferta de productos</option>
+                                    <option>Ventajas reclutamiento</option>
+                                    <option>Recomendar diseñadores</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="description">Descripción de la campaña</label>
+                                <textarea name="description" class="form-control" id="description"
+                                    rows="3"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="startDate">Fecha inicio</label>
+                                <input name="startDate" type="date" class="form-control" id="startDate">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="endDate">Fecha fin</label>
+                                <input name="endDate" type="date" class="form-control" id="endDate">
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="button submit" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </form>
                 </div>
-                <div>
-                    <span class="date">Fecha fin</span>
-                    <input id="dateEnd" size="16" type="date">
+            </div>
+        </div>
+
+        <hr>
+
+        <h1 class="mt-5">Clientes</h1>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#customerModal">
+            Añadir datos de clientes
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="customerModal" tabindex="-1" role="dialog" aria-labelledby="customerModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="customerModalLabel">Añadir datos de clientes</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form action="/customer" method="post">
+                        <div class="modal-body">
+
+                            <div class="form-group">
+                                <label for="name">Nombre</label>
+                                <input name="name" type="text" class="form-control" id="name">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="country">País</label>
+                                <input name="country" type="text" class="form-control" id="country">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="city">Ciudad</label>
+                                <input name="city" type="text" class="form-control" id="city">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="customerType">Tipo de cliente</label>
+                                <select name="customerType" class="form-control" id="customerType">
+                                    <option>Usuario</option>
+                                    <option>Diseñador</option>
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="button submit" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </form>
                 </div>
-            </div>
-
-
-            <div class="dialogButtons">
-                <button id="save-marketing" type="submit" class="btn btn-primary btn-md btn-info ">
-                    <span class="glyphicon glyphicon-edit"></span>Save</button>
-                <button id="close-marketing" type="submit" class="btn btn-primary btn-md btn-info"><span
-                        class="glyphicon glyphicon-remove"></span>Cancel</button>
-                <button id="delete" type="submit" class="btn btn-primary btn-md btn-info"> <span
-                        class="glyphicon glyphicon-trash"></span>
-                    Delete</button>
-            </div>
+            </div>        
         </div>
 
-    </div>
-
-    <div id="clientDialog" class="modal-dialog form-group">
-        <div class="modal-content">
-            <h3>Añadir datos de clientes<span class="glyphicon glyphicon-pencil"></span></h3>
-            <div>
-                <span>Nombre</span>
-                <input id="nameClient" type="text"></textarea>
-            </div>
-            <div>
-                <span>Pais</span>
-                <input id="countryClient" type="text"></textarea>
-            </div>
-            <div>
-                <span >Ciudad</span>
-                <input id="cityClient" type="text" ></textarea> 
-            </div>
-
-            <div class="input-group">
-                <form>
-                    <span class="input-group-addon">Tipo de cliente</span>
-                    <input type="radio" name="user" value="user" checked>Usuario<br>
-                    <input type="radio" name="user" value="designer">Diseñador<br>
-                </form>
-            </div>
-
-
-            <div class="dialogButtons">
-                <button id="edit" type="submit" class="btn btn-primary btn-md btn-info ">
-                    <span class="glyphicon glyphicon-edit"></span>Save</button>
-                <button id="closeEdit" type="submit" class="btn btn-primary btn-md btn-info"><span
-                        class="glyphicon glyphicon-remove"></span>Cancel</button>
-                <button id="delete" type="submit" class="btn btn-primary btn-md btn-info"> <span
-                        class="glyphicon glyphicon-trash"></span>
-                    Delete</button>
-            </div>
-        </div>
+        <h1 class="mt-5">Estadísticas</h1>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#dummy">
+            Visualizar estadísticas
+        </button>
 
     </div>
 
 
-
-    <div id="statsDisplay" class="modal-dialog form-group">
-        <div class="modal-content">
-            <h3>Visualizar Estadísticas<span class="glyphicon glyphicon-pencil"></span></h3>
-            <div id="chart_div" style="width: 900px; height: 250px;"></div>
-            <div id="piechart" style="width: 450px; height: 250px;"></div>
-            <div id="age-budget" style="width: 600px; height: 250px;"></div>
-            <div id="designers-styles" style="width: 600px; height: 250px;"></div>
-        </div>
-
-    </div>
-
-
-    <div class="panel panel-info">
-        <div class="panel-heading">
-            <span class="panel-title">CRM<span class="glyphicon glyphicon-list"></span></span>
-
-        </div>
-    </div>
-    <div class="panel panel-info">
-        <div class="panel-heading">
-            <button id="addNote" type="button" class="btn-primary">Crear campaña de marketing</button>
-
-        </div>
-        <div class="panel-body">
-            <div id="notes">
-                <h3 id="emptyNotes">No current data</h3>
-            </div>
-
-        </div>
-    </div>
-    <div class="panel panel-info">
-        <div class="panel-heading">
-            <button id="addClient" type="button" class="btn-primary">Añadir datos de clientes</button>
-
-        </div>
-        <div class="panel-body">
-            <div id="notes">
-                <h3 id="emptyNotes">No current data</h3>
-            </div>
-
-        </div>
-    </div>
-    <div class="panel panel-info">
-        <div class="panel-heading">
-            <button id="stats" type="button" class="btn-primary">Visualizar estadísticas</button>
-
-        </div>
-        <div class="panel-body">
-            <div id="notes">
-                <h3 id="emptyNotes">No current data</h3>
-            </div>
-
-        </div>
-    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -1,64 +1,27 @@
 const express = require('express');
 const path = require('path');
-const cors = require('cors');
-const appDAO = require('./main');
-var bodyParser = require('body-parser')
-const dao = new appDAO('./database.db');
-const app = express();
-let idCounter = 0;
-let idCounterCustomer = 0;
-app.listen(8080,()=>{
-    console.log('Server started on port 8080')
-})
+//const controller = require('./controller')
+//var dao = new controller('./database.db');
 
-app.use(cors({origin:'http://localhost:8080'}));
-app.use(bodyParser.json());
+var app = express();
 
-app.get('/', (req,res)=>{
-    res.sendFile(path.resolve(__dirname,'./index.html'));
-})
+app.use(express.json()) // for parsing application/json
+app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
-app.get('/assets/js/CRM.js',(req,res)=>{
-    res.sendFile(path.resolve(__dirname,'./assets/js/CRM.js'))
-})
-
-app.get('/assets/css/index.css',(req,res)=>{
-    res.sendFile(path.resolve(__dirname,'./assets/css/index.css'))
-})
-
-app.post('/marketing',(req,res)=>{
-    console.log('Add marketing campaign');
-    console.log(req.body);
-    let campaign = req.body;
-    idCounter += 1;
-    campaignId = dao.run('INSERT INTO CAMPAIGN (ID_CAMPAIGN,TYPE_CAMPAIGN,OBJECTIVE_CUSTOMER,DESCRIPTION,START_DATE,FINISH_DATE) values ($1,$2,$3,$4,$5,$6)',[idCounter,campaign.campaign,campaign.user,campaign.description,campaign.dateStart, campaign.dateEnd]);
-
-    //ToDo create and save the marketing campaign data
+app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname + '/index.html'));
 });
 
-app.get('/data',(req,res)=>{
-    console.log('Load Data');
-
-    designerData= dao.getAll("SELECT * FROM DESIGNER");
-    customerData = dao.getAll("SELECT * FROM CUSTOMER");
-    designData = dao.getAll("SELECT * FROM DESIGN");
-    orderData = dao.getAll("SELECT  * FROM DESIGN_ORDER do, CUSTOMER c, DESIGNER dsg,DESIGN dsn WHERE do.ID_CUSTOMER=c.ID_CUSTOMER AND do.ID_DESIGN=dsn.ID_DESIGN AND dsg.ID_DESIGNER=dsn.ID_DESIGNER")
-    res.status(200).json({
-        designers:designerData,
-        customers:customerData,
-        designs:designData,
-        orders:orderData
-    });
-})
-
-app.post('/customer',(req,res)=>{
-    console.log('Add customer');
-    console.log(req.body);
-    let customer = req.body;
-    idCounterCustomer += 1
-    customerId = dao.run('INSERT INTO CUSTOMER (ID_CUSTOMER,NAME_CUSTOMER,TYPE_CUSTOMER,CITY, COUNTRY) values ($1,$2,$3,$4,$5)',[idCounterCustomer,customer.name,customer.type,customer.city,customer.country]);
-    //ToDo save the client data received in the database
+app.post('/marketing', function (req, res) {
+    console.log(req.body)
+    res.json(req.body)
 });
 
+app.post('/customer', function (req, res) {
+    console.log(req.body)
+    res.json(req.body)
+});
 
-
+app.listen(8080, function () {
+    console.log('App listening on port 8080!');
+});
