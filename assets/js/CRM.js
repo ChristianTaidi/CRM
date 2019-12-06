@@ -13,8 +13,6 @@ function loadData(callback) {
         callback(data);
     })
 
-    callback([]);
-
 }
 // manages the add new notes button
 function createCampaign(campaign, callback) {
@@ -150,7 +148,7 @@ function deleteNote(id) {
 $(document).ready(function () {
     var addDialog = document.getElementsByClassName("addDialog");
 
-    var gData = loadData((data)=> {
+    loadData((data)=> {
         console.log("Callback");
         console.log(data.designers);
         console.log(data.customers);
@@ -158,6 +156,7 @@ $(document).ready(function () {
         console.log(data.designs);
 
        
+        console.log(data.designers.length);
         for (var i = 0; i < data.designers.length; i++) {
             showDesigner(data.designers[i]);
         }
@@ -170,8 +169,8 @@ $(document).ready(function () {
         for (var i = 0; i < data.orders.length; i++) {
             showOrder(data.orders[i]);
         }
-        return data;
-    })
+        
+    });
 
     var marketing = document.getElementById('marketing');
 
