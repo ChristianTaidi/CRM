@@ -148,9 +148,28 @@
 
         <h1 class="mt-5">Estadísticas</h1>
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#dummy">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#stats">
             Visualizar estadísticas
         </button>
+
+        <div class="modal fade" id="stats" tabindex="-1" role="dialog" aria-labelledby="customerModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="customerModalLabel">Visualizar estadísticas</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    
+                    <div id="chart_div" style="width: 900px; height: 250px;"></div>
+                    <div id="piechart" style="width: 450px; height: 250px;"></div>
+                    <div id="age-budget" style="width: 600px; height: 250px;"></div>
+                    <div id="designers-styles" style="width: 600px; height: 250px;"></div>
+                </div>
+            </div>        
+        </div>
 
     </div>
 
@@ -168,6 +187,7 @@
         crossorigin="anonymous"></script>
         <script src="./assets/js/CRM.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 </body>
 
