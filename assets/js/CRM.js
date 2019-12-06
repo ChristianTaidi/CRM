@@ -166,7 +166,7 @@ function deleteNote(id) {
 
 $(document).ready(function () {
     var addDialog = document.getElementsByClassName("addDialog");
-
+var gData;
     loadData((data)=> {
         console.log("Callback");
         console.log(data.designers);
@@ -188,14 +188,31 @@ $(document).ready(function () {
         for (var i = 0; i < data.orders.length; i++) {
             showOrder(data.orders[i]);
         }
-        
-    });
-    
-//ToDo obtener datos de la base de datos y mostrar en estadísticas
-    google.charts.load('current', {'packages':['corechart', 'bar']});
-      google.charts.setOnLoadCallback(drawChart);
 
-      function drawChart() {
+        
+        google.charts.load('current', {'packages':['corechart', 'bar']});
+        google.charts.setOnLoadCallback(function() { drawChart(data); });
+
+        function drawChart(gData) {
+
+        var customerUnder25 = gData.customers.filter(customer=>
+            customer.CUSTOMER_AGE>18 && customer.CUSTOMER_AGE<25
+        );
+        var customerUnder35 = gData.customers.filter(customer=>customer.CUSTOMER_AGE>25 && customer.CUSTOMER_AGE<35
+        );
+        var customerUnder55 = gData.customers.filter(customer=>
+            customer.CUSTOMER_AGE>35 && customer.CUSTOMER_AGE<55
+        );
+        console.log(customerUnder25);
+        console.log(customerUnder35);
+        console.log(customerUnder55);
+        var under25Budget = customerUnder25.reduce((total,next)=>total+next.BUDGET,0)/ customerUnder25.length;
+        var under35Budget = customerUnder35.reduce((total,next)=>total+next.BUDGET,0)/ customerUnder35.length;
+        var under55Budget = customerUnder55.reduce((total,next)=>total+next.BUDGET,0)/ customerUnder55.length;
+        
+        console.log(under25Budget);
+        console.log(under35Budget);
+        console.log(under55Budget);
 
         //Graficas Numero de clientes y Ganancias/Gastos
         var data = google.visualization.arrayToDataTable([
@@ -208,8 +225,8 @@ $(document).ready(function () {
 
         var data2 = google.visualization.arrayToDataTable([
             ['Clientes', 'Tipos'],
-            ['Usuarios',     21],
-            ['Diseñadores',    7]
+            ['Usuarios',    gData.customers.length],
+            ['Diseñadores',    gData.designers.length]
           ]);
 
         var options = {
@@ -234,9 +251,9 @@ $(document).ready(function () {
         //Grafica Edad-Presupuesto
         var dataAgeBudget = google.visualization.arrayToDataTable([
             ["Edad", "Presupuesto", { role: "style" } ],
-            ["18-25", 300, "gold"],
-            ["26-35", 400, "silver"],
-            ["35-55", 450, "bronze"]
+            ["18-25", under25Budget, "gold"],
+            ["26-35", under35Budget, "silver"],
+            ["35-55", under55Budget, "bronze"]
         ]);
     
         var viewAgeBudget = new google.visualization.DataView(dataAgeBudget);
@@ -284,6 +301,12 @@ $(document).ready(function () {
           var chartDesigners = new google.charts.Bar(document.getElementById('designers-styles'));
           chartDesigners.draw(dataDesigners, google.charts.Bar.convertOptions(optionsDesigners));
     }
+
+    });
+    console.log(gData);
+    
+//ToDo obtener datos de la base de datos y mostrar en estadísticas
+    
     
 
 })
