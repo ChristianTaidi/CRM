@@ -5,15 +5,13 @@ const appDAO = require('./main');
 var bodyParser = require('body-parser')
 const dao = new appDAO('./database.db');
 const app = express();
-let idCounter = 0;
-let idCounterCustomer = 0;
-let idCounterDesigner = 0;
 app.listen(8080,()=>{
     console.log('Server started on port 8080')
 })
 
 app.use(cors({origin:'http://localhost:8080'}));
-app.use(express.json())
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.get('/', (req,res)=>{
     res.sendFile(path.resolve(__dirname,'./index.html'));
 })
@@ -30,8 +28,7 @@ app.post('/marketing',(req,res)=>{
     console.log('Add marketing campaign');
     console.log(req.body);
     let campaign = req.body;
-    idCounter += 1;
-    campaignId = dao.run('INSERT INTO CAMPAIGN (ID_CAMPAIGN,TYPE_CAMPAIGN,OBJECTIVE_CUSTOMER,DESCRIPTION,START_DATE,FINISH_DATE) values ($1,$2,$3,$4,$5,$6)',[idCounter,campaign.campaign,campaign.user,campaign.description,campaign.dateStart, campaign.dateEnd]);
+    campaignId = dao.run('INSERT INTO CAMPAIGN (TYPE_CAMPAIGN,OBJECTIVE_CUSTOMER,DESCRIPTION,START_DATE,FINISH_DATE) values ($1,$2,$3,$4,$5)',[campaign.campaign,campaign.user,campaign.description,campaign.dateStart, campaign.dateEnd]);
 
     //ToDo create and save the marketing campaign data
 });
@@ -76,8 +73,7 @@ app.post('/customer',(req,res)=>{
     console.log('Add customer');
     console.log(req.body);
     let customer = req.body;
-    idCounterCustomer += 1;
-    customerId = dao.run('INSERT INTO CUSTOMER (ID_CUSTOMER,NAME_CUSTOMER,TYPE_CUSTOMER,CITY, COUNTRY) values ($1,$2,$3,$4,$5)',[idCounterCustomer,customer.name,customer.type,customer.city,customer.country]);
+    customerId = dao.run('INSERT INTO CUSTOMER (NAME_CUSTOMER,TYPE_CUSTOMER,CITY, COUNTRY) values ($1,$2,$3,$4)',[customer.name,customer.type,customer.city,customer.country]);
     //ToDo save the client data received in the database
 });
 
@@ -85,8 +81,7 @@ app.post('/designer',(req,res)=>{
     console.log('Add designer');
     console.log(req.body);
     let customer = req.body;
-    idCounterDesigner += 1;
-    customerId = dao.run('INSERT INTO DESIGNER (ID_DESIGNER,NAME_DESIGNER,NUMBER_OF_DESIGNS,CITY, COUNTRY) values ($1,$2,$3,$4,$5)',[idCounterDesigner,designer.name,designer.designs,designer.city,designer.country]);
+    customerId = dao.run('INSERT INTO DESIGNER (NAME_DESIGNER,NUMBER_OF_DESIGNS,CITY, COUNTRY) values ($1,$2,$3,$4,$5)',[idCounterDesigner,designer.name,designer.designs,designer.city,designer.country]);
     //ToDo save the client data received in the database
 });
 
