@@ -150,7 +150,7 @@ function deleteNote(id) {
 $(document).ready(function () {
     var addDialog = document.getElementsByClassName("addDialog");
 
-    loadData(function (data) {
+    var gData = loadData((data)=> {
         console.log("Callback");
         console.log(data.designers);
         console.log(data.customers);
@@ -170,6 +170,7 @@ $(document).ready(function () {
         for (var i = 0; i < data.orders.length; i++) {
             showOrder(data.orders[i]);
         }
+        return data;
     })
 
     var marketing = document.getElementById('marketing');
