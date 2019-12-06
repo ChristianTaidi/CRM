@@ -13,8 +13,7 @@ app.listen(8080,()=>{
 })
 
 app.use(cors({origin:'http://localhost:8080'}));
-app.use(bodyParser.json());
-
+app.use(express.json())
 app.get('/', (req,res)=>{
     res.sendFile(path.resolve(__dirname,'./index.html'));
 })
