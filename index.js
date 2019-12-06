@@ -7,6 +7,7 @@ const dao = new appDAO('./database.db');
 const app = express();
 let idCounter = 0;
 let idCounterCustomer = 0;
+let idCounterDesigner = 0;
 app.listen(8080,()=>{
     console.log('Server started on port 8080')
 })
@@ -78,6 +79,15 @@ app.post('/customer',(req,res)=>{
     let customer = req.body;
     idCounterCustomer += 1
     customerId = dao.run('INSERT INTO CUSTOMER (ID_CUSTOMER,NAME_CUSTOMER,TYPE_CUSTOMER,CITY, COUNTRY) values ($1,$2,$3,$4,$5)',[idCounterCustomer,customer.name,customer.type,customer.city,customer.country]);
+    //ToDo save the client data received in the database
+});
+
+app.post('/designer',(req,res)=>{
+    console.log('Add designer');
+    console.log(req.body);
+    let customer = req.body;
+    idCounterCustomer += 1
+    customerId = dao.run('INSERT INTO DESIGNER (ID_DESIGNER,NAME_DESIGNER,NUMBER_OF_DESIGNS,CITY, COUNTRY) values ($1,$2,$3,$4,$5)',[idCounterDesigner,designer.name,designer.designs,designer.city,designer.country]);
     //ToDo save the client data received in the database
 });
 
