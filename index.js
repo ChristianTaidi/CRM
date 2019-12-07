@@ -40,6 +40,7 @@ app.get('/data',(req,res)=>{
     var designData;
     var orderData;
     var designDesigner;
+    var campaign;
     dao.getAll("SELECT * FROM DESIGNER").then(
         (result)=>{
             designerData=result;
@@ -55,13 +56,19 @@ app.get('/data',(req,res)=>{
                                     dao.getAll("select d.NAME_DESIGNER, avg(value) avg_value from DESIGNER d, DESIGN d2 where d.ID_DESIGNER = d2.ID_DESIGNER GROUP BY d.NAME_DESIGNER;").then(
                                         (result)=>{
                                             designDesigner= result;
-                                            res.status(200).json({
-                                                designers:designerData,
-                                                customers:customerData,
-                                                designs:designData,
-                                                orders:orderData,
-                                                designDesigner:designDesigner
-                                            });
+                                            dao.getAll("SELECT * FROM CAMPAIGN").then(
+                                                (result)=>{
+                                                    campaign= result;
+                                                    res.status(200).json({
+                                                        designers:designerData,
+                                                        customers:customerData,
+                                                        designs:designData,
+                                                        orders:orderData,
+                                                        designDesigner:designDesigner,
+                                                        campaigns:campaign
+                                                    });
+                                                }
+                                            )
                                         }
                                     )
                                     

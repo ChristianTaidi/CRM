@@ -72,6 +72,23 @@ function createdDesigner(designer, callback) {
 
 }
 // appends the notes to the html document
+function showCampaign(campaign) {
+
+
+    console.log("Show campaign");
+    if (campaign !== null) {
+        $('#notes-campaign').append(
+              '<tr>',
+              '<td> Campaña </td>',
+              '<td>' + campaign.TYPE_CAMPAIGN + '</td>',
+              '<td>' + campaign.OBJECTIVE_CUSTOMER + '</td>',
+              '<td>' + campaign.START_DATE + '</td>',
+              '<td>' + campaign.FINISH_DATE + '</td>',
+              '<td>' + campaign.DESCRIPTION + '</td>',
+              '<td>' + campaign.VALUE + '</td>',
+              '</tr>')
+    }
+}
 function showDesigner(designer) {
 
 
@@ -105,13 +122,12 @@ function showDesign(design) {
 
     console.log("Show design");
     if (design !== null) {
-        $('#notes').append(
-            '<div class="design" id="design-' + design.ID_DESIGN + '">' +
-            '<p class="designer">' + design.NAME_DESIGNER + '</p>' +
-
-            '<p class="value">' + design.VALUE + '</p>' +
-            '<p class="description">' + design.DESCRIPTION + '</p>' +
-            ' </div>')
+        $('#notes-designs').append(
+            '<tr>',
+              '<td>' + design.NAME_DESIGNER + '</td>',
+              '<td>' + design.DESCRIPTION + '</td>',
+              '<td>' + design.VALUE + '</td>',
+              '</tr>')
     }
 }
 
@@ -121,17 +137,13 @@ function showOrder(order) {
     console.log("Show order");
     console.log(order);
     if (order !== null) {
-        $('#notes').append(
-            '<div class="order" id="order-' + order.ID_ORDER + '">' +
-            '<p class="customer">' + order.NAME_CUSTOMER + '</p>' +
-
-
-            '<p class="designer">' + order.NAME_DESIGNER + '</p>' +
-            '<p class="description">' + order.DESCRIPTION + '</p>' +
-
-
-            '<p class="value">' + order.VALUE + '</p>' +
-            ' </div>')
+        $('#notes-orders').append(
+            '<tr>',
+              '<td>' + order.NAME_CUSTOMER + '</td>',
+              '<td>' + order.NAME_DESIGNER + '</td>',
+              '<td>' + order.DESCRIPTION + '</td>',
+              '<td>' + order.VALUE + '</td>',
+              '</tr>')
     }
 }
 
@@ -174,6 +186,7 @@ var gData;
         console.log(data.customers);
         console.log(data.orders);
         console.log(data.designs);
+        console.log(data.campaigns);
 
        
         console.log(data.designers.length);
@@ -188,6 +201,10 @@ var gData;
         }
         for (var i = 0; i < data.orders.length; i++) {
             showOrder(data.orders[i]);
+        }
+
+        for (var i = 0; i < data.campaigns.length; i++) {
+            showCampaign(data.campaigns[i]);
         }
 
         
