@@ -77,12 +77,12 @@ function showDesigner(designer) {
 
     console.log("Show designer");
     if (designer !== null) {
-        $('#notes').append(
-            '<div class="designer" id="designer-' + designer.ID_DESIGNER + '">' +
-            '<p class="name">' + designer.NAME_DESIGNER + '</p>' +
-            '<p class="nDesigns">' + designer.NUMBER_OF_DESIGNS + '</p>' +
-            '<p class="city">' + designer.CITY + '</p>' +
-            ' </div>')
+        $('#notes-customers').append(
+              '<tr>',
+              '<td> '+ designer.ID_DESIGNER + '</td>',
+              '<td>' + designer.NAME_DESIGNER + '</td>',
+              '<td>' + designer.CITY + '</td>',
+              '</tr>')
     }
 }
 
@@ -91,11 +91,12 @@ function showCustomer(customer) {
 
     console.log("Show customer");
     if (customer !== null) {
-        $('#notes').append(
-            '<div class="customer" id="customer-' + customer.ID_CUSTOMER + '">' +
-            '<p class="name">' + customer.NAME_CUSTOMER + '</p>' +
-            '<p class="city">' + customer.CITY + '</p>' +
-            ' </div>')
+        $('#notes-customers').append(
+              '<tr>',
+              '<td> '+ customer.ID_CUSTOMER + '</td>',
+              '<td>' + customer.NAME_CUSTOMER + '</td>',
+              '<td>' + customer.CITY + '</td>',
+              '</tr>')
     }
 }
 
