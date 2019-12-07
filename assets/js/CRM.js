@@ -79,7 +79,7 @@ function showDesigner(designer) {
     if (designer !== null) {
         $('#notes-customers').append(
               '<tr>',
-              '<td> '+ designer.ID_DESIGNER + '</td>',
+              '<td> Diseñador </td>',
               '<td>' + designer.NAME_DESIGNER + '</td>',
               '<td>' + designer.CITY + '</td>',
               '</tr>')
@@ -93,7 +93,7 @@ function showCustomer(customer) {
     if (customer !== null) {
         $('#notes-customers').append(
               '<tr>',
-              '<td> '+ customer.ID_CUSTOMER + '</td>',
+              '<td> Cliente </td>',
               '<td>' + customer.NAME_CUSTOMER + '</td>',
               '<td>' + customer.CITY + '</td>',
               '</tr>')
