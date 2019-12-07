@@ -39,7 +39,7 @@ app.get('/data',(req,res)=>{
     var customerData;
     var designData;
     var orderData;
-    dao.getAll("SELECT * FROM DESIGNER").then(
+    dao.getAll("select d.ID_DESIGNER, d.NAME_DESIGNER, d.NUMBER_OF_DESIGNS, d.CITY, avg(value) avg_value from DESIGNER d, DESIGN d2 where d.ID_DESIGNER = d2.ID_DESIGNER GROUP BY d.NAME_DESIGNER;").then(
         (result)=>{
             designerData=result;
             dao.getAll("SELECT * FROM CUSTOMER").then(

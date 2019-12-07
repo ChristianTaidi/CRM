@@ -277,18 +277,23 @@ var gData;
 
 
         //Grafica Diseñadores-Estilos de diseño
+       
         var dataDesigners = new google.visualization.arrayToDataTable([
-            ['Diseñadores', 'Nº de estilos'],
-            ["Diseñador 1", 2],
-            ["Diseñador 2", 7],
-            ["Diseñador 3", 5],
+            ['Diseñadores', 'Coste medio de diseños'],
+            ["Diseñador 1", 350],
+            ["Diseñador 2", 290],
+            ["Diseñador 3", 176],
           ]);
+          for(var i=0; i<gData.designers.length ;i++){
+              console.log(gData.designers[i]);
+              dataDesigners.addRow([gData.designers[i].NAME_DESIGNER,gData.designers[i].avg_value]);
+          }
   
           var optionsDesigners = {
             width: 400,
             height: 200,
             chart: {
-                title: 'Diseñadores - Nº de estilos'},
+                title: 'Diseñadores - Coste medio de diseños'},
               axes: {
                 x: {
                   0: { side: 'bot', label: 'Diseñadores'} // Top x-axis.
