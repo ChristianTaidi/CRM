@@ -218,10 +218,10 @@ var gData;
         //Graficas Numero de clientes y Ganancias/Gastos
         var data = google.visualization.arrayToDataTable([
           ['Año', 'Ganancias', 'Gastos'],
-          ['2013',  1000,      400],
-          ['2014',  1170,      460],
-          ['2015',  660,       1120],
-          ['2016',  1030,      540]
+          ['2013',  1200,      2000],
+          ['2014',  1700,      1500],
+          ['2015',  2000,       1250],
+          ['2016',  2200,      1000]
         ]);
 
         var data2 = google.visualization.arrayToDataTable([
@@ -285,9 +285,8 @@ var gData;
             ["Diseñador 2", 290],
             ["Diseñador 3", 176],
           ]);
-          for(var i=0; i<gData.designers.length ;i++){
-              console.log(gData.designers[i]);
-              dataDesigners.addRow([gData.designers[i].NAME_DESIGNER,gData.designers[i].avg_value]);
+          for(var i=0; i<gData.designDesigner.length ;i++){
+              dataDesigners.addRow([gData.designDesigner[i].NAME_DESIGNER,gData.designDesigner[i].avg_value]);
           }
   
           var optionsDesigners = {
