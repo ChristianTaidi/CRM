@@ -99,6 +99,7 @@ function showDesigner(designer) {
               '<td> Diseñador </td>',
               '<td>' + designer.NAME_DESIGNER + '</td>',
               '<td>' + designer.CITY + '</td>',
+              '<td>' + designer.COUNTRY + '</td>',
               '</tr>')
     }
 }
@@ -113,6 +114,8 @@ function showCustomer(customer) {
               '<td> Cliente </td>',
               '<td>' + customer.NAME_CUSTOMER + '</td>',
               '<td>' + customer.CITY + '</td>',
+              '<td>' + customer.COUNTRY + '</td>',
+              '<td>' + customer.BUDGET + '</td>',
               '</tr>')
     }
 }

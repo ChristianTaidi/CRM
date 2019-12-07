@@ -89,7 +89,9 @@ app.post('/customer',(req,res)=>{
     console.log(req.body);
     let customer = req.body;
     if(customer.customerType == "user"){
-        customerId = dao.run('INSERT INTO CUSTOMER (NAME_CUSTOMER,TYPE_CUSTOMER,CITY, COUNTRY) values ($1,$2,$3,$4)',[customer.name,customer.type,customer.city,customer.country]); 
+        let budget = Math.floor(Math.random() * 1000) + 100;
+        let age = Math.floor(Math.random() * 55) + 18;
+        customerId = dao.run('INSERT INTO CUSTOMER (NAME_CUSTOMER,TYPE_CUSTOMER,CITY, COUNTRY, CUSTOMER_AGE, BUDGET) values ($1,$2,$3,$4,$5,$6)',[customer.name,customer.type,customer.city,customer.country,age,budget]); 
     }else{
         customerId = dao.run('INSERT INTO DESIGNER (NAME_DESIGNER,NUMBER_OF_DESIGNS,CITY, COUNTRY) values ($1,$2,$3,$4)',[customer.name,0,customer.city,customer.country]);
     
