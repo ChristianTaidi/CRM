@@ -104,6 +104,21 @@
             Añadir datos de clientes
         </button>
 
+        <div class= "container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Ciudad</th>
+                        </tr>
+                    </thead>
+                    <tbody id = "notes-customers">
+    
+                    </tbody>
+                </table>
+            </div>
+
         <!-- Modal -->
         <div class="modal fade" id="customerModal" tabindex="-1" role="dialog" aria-labelledby="customerModalLabel"
             aria-hidden="true">
@@ -136,8 +151,8 @@
                             <div class="form-group">
                                 <label for="customerType">Tipo de cliente</label>
                                 <select name="customerType" class="form-control" id="customerType">
-                                    <option>Usuario</option>
-                                    <option>Diseñador</option>
+                                    <option value="user">Usuario</option>
+                                    <option value="designer">Diseñador</option>
                                 </select>
                             </div>
 
@@ -194,6 +209,10 @@
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+      </head>
 
 </body>
 
