@@ -79,13 +79,11 @@ function showCampaign(campaign) {
     if (campaign !== null) {
         $('#notes-campaign').append(
               '<tr>',
-              '<td> Campaña </td>',
               '<td>' + campaign.TYPE_CAMPAIGN + '</td>',
               '<td>' + campaign.OBJECTIVE_CUSTOMER + '</td>',
               '<td>' + campaign.START_DATE + '</td>',
               '<td>' + campaign.FINISH_DATE + '</td>',
               '<td>' + campaign.DESCRIPTION + '</td>',
-              '<td>' + campaign.VALUE + '</td>',
               '</tr>')
     }
 }
