@@ -98,6 +98,7 @@ function showDesigner(designer) {
               '<td>' + designer.NAME_DESIGNER + '</td>',
               '<td>' + designer.CITY + '</td>',
               '<td>' + designer.COUNTRY + '</td>',
+              '<td>-</td>',
               '</tr>')
     }
 }
